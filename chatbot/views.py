@@ -23,7 +23,7 @@ from chatbot.models import event,resume_input
 
 sender_id = 'ba'
 VERIFY_TOKEN = '7thseptember2016'
-PAGE_ACCESS_TOKEN = 'EAATyjn0ZCjToBAMdoo4Mseocx6fwD1I5UM372rP2yQZA4EFqHOjegtLCy6DJChHqta12vGIxgAUFrTZCPzzN8BnmiwZAJtDg3dOy2F4VWM3QeOKVqvaSgp5pjZCo4ywe5buXTOzyyWEIyYr6DNXB2A6gRTDtQshwrarq1RIZC1rAZDZD'
+PAGE_ACCESS_TOKEN = 'EAATyjn0ZCjToBAI8vGomXbBh1Uk2kHH37E62fjAkcuxhH2bW4rBZCKHftgrIiS72DILFlQVUlk6FO4Ut6k1zquTXnaZCkMLhYf2K6E7ZBt3wLHQilZCZBMfRsV3fQCilng7jfeMRoilcKsywlwnXemRbvF8KKf5kPAvR1BYPLiQwZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
 
