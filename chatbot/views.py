@@ -86,7 +86,7 @@ def card_resume(fbid):
               "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://myresumemaker.herokuapp.com/try/%s"%(fbid),  
+                "url": "https://myresumemaker.herokuapp.com/resume/%s"%(fbid),  
                 "title": "DOWNLOAD"
               }, {
                 "type": "element_share"
