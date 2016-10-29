@@ -82,7 +82,7 @@ def card_resume(fbid):
             "elements": [{
               "title": "RESUME",
               "subtitle": "Don,t wait just click",
-              "item_url": "https://myresumemaker.herokuapp.com/try/%s"%(fbid),               
+              "item_url": "https://myresumemaker.herokuapp.com/resume/%s"%(fbid),               
               "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
