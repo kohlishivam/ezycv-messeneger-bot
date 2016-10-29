@@ -129,11 +129,11 @@ def cards(fbid):
             }, {
               "title": "hackathon theme",
               "subtitle": "all tech competitions them",
-              "item_url": "https://myresumemaker.herokuapp.com/temp2/%s"%(fbid),               
+              "item_url": "https://fierce-shelf-38310.herokuapp.com/temp2/%s"%(fbid),               
               "image_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t35.0-12/14795941_1785774938361057_1017427262_o.png?oh=6809b9c14ee2646703a8047da8b2c479&oe=580A89BA",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://myresumemaker.herokuapp.com/temp2/%s"%(fbid),
+                "url": "https://fierce-shelf-38310.herokuapp.com/temp2/%s"%(fbid),
                 "title": "Open your website in this theme"
               }, {
                 "type": "element_share"
