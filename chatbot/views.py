@@ -23,7 +23,7 @@ from chatbot.models import event,resume_input
 
 sender_id = 'ba'
 VERIFY_TOKEN = '7thseptember2016'
-PAGE_ACCESS_TOKEN = 'EAATyjn0ZCjToBAI8vGomXbBh1Uk2kHH37E62fjAkcuxhH2bW4rBZCKHftgrIiS72DILFlQVUlk6FO4Ut6k1zquTXnaZCkMLhYf2K6E7ZBt3wLHQilZCZBMfRsV3fQCilng7jfeMRoilcKsywlwnXemRbvF8KKf5kPAvR1BYPLiQwZDZD'
+PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
 
@@ -82,11 +82,12 @@ def card_resume(fbid):
             "elements": [{
               "title": "RESUME",
               "subtitle": "Don,t wait just click",
-              "item_url": "https://fierce-shelf-38310.herokuapp.com/resume/%s"%(fbid),               
+              "item_url": "https://myresumemaker.herokuapp.com/resume/%s"%(fbid),               
+              "item_url": "https://myresumemaker.herokuapp.com/resume/%s"%(fbid),               
               "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://fierce-shelf-38310.herokuapp.com/resume/%s"%(fbid),  
+                "url": "https://myresumemaker.herokuapp.com/resume/%s"%(fbid),  
                 "title": "DOWNLOAD"
               }, {
                 "type": "element_share"
@@ -129,11 +130,11 @@ def cards(fbid):
             }, {
               "title": "hackathon theme",
               "subtitle": "all tech competitions them",
-              "item_url": "https://fierce-shelf-38310.herokuapp.com/temp2/%s"%(fbid),               
+              "item_url": "https://myresumemaker.herokuapp.com/temp2/%s"%(fbid),               
               "image_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t35.0-12/14795941_1785774938361057_1017427262_o.png?oh=6809b9c14ee2646703a8047da8b2c479&oe=580A89BA",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://fierce-shelf-38310.herokuapp.com/temp2/%s"%(fbid),
+                "url": "https://myresumemaker.herokuapp.com/temp2/%s"%(fbid),
                 "title": "Open your website in this theme"
               }, {
                 "type": "element_share"
