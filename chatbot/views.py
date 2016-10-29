@@ -591,34 +591,16 @@ class MyChatBotView(generic.View):
                                 post_facebook_message(sender_id,'Any more? if no simply type no')
 
                     elif pp.state =='27':
-                        pp.hobbies_4 = message_text
-                        pp.state ='28'
-                        pp.save()
-                        post_facebook_message(sender_id,'name')
+                        if message_text == 'no':
+                            pp.state ='28'
+                            pp.save()
+                            post_facebook_message(sender_id,'name')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
-
-                    
-
-
-
-
-
-
+                        else:
+                            pp.experience_4 = message_text
+                            pp.state ='28'
+                            pp.save()
+                            post_facebook_message(sender_id,'name')
 
 
 
