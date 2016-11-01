@@ -27,11 +27,6 @@ PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVb
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
 
-
-    
-
-
-
 def userdeatils(fbid):
     url = 'https://graph.facebook.com/v2.6/' + fbid + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAGE_ACCESS_TOKEN
     resp = requests.get(url=url)
@@ -231,11 +226,6 @@ class MyChatBotView(generic.View):
                         print  'hihihihihihihihihih'+ sender_id
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                         post_facebook_message(sender_id,'selection')
-
-                                           
-
-
-                        
                            
                             
                     elif p.state =='1':
@@ -390,11 +380,6 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'Okay, your achievements if any')
 
 
-
- 
-
-
-
                     elif pp.state =='8':
                         pp.objective_achievements = message_text
                         pp.state='9'
@@ -446,11 +431,6 @@ class MyChatBotView(generic.View):
                             pp.save()
                             post_facebook_message(sender_id,'Great , now tell me your skills in your field,first')
 
-
-
-
-
-
                 
                     elif pp.state =='13':
                         pp.skills_1 = message_text
@@ -497,11 +477,6 @@ class MyChatBotView(generic.View):
                             pp.state ='18'
                             pp.save()
                             post_facebook_message(sender_id,'Great , now tell me your experience,first')
-
-
-
-
-
                    
                     elif pp.state =='18':
                         pp.experience_1 = message_text
@@ -548,12 +523,6 @@ class MyChatBotView(generic.View):
                             pp.state ='23'
                             pp.save()
                             post_facebook_message(sender_id,'Great , now tell me your hobbies,first')
-
-
-
-
-
-
 
                     
 
@@ -602,11 +571,7 @@ class MyChatBotView(generic.View):
                             pp.state ='28'
                             pp.save()
                             post_facebook_message(sender_id,'name')
-
-
-
-
-
+                    
                     elif pp.state =='28':
                         pp.name = message_text
                         pp.save()
@@ -882,10 +847,22 @@ def handle_postback(fbid,payload):
         pp.greetings = 'TRUE'
         pp.save()
 
-        return post_facebook_message(fbid,'Please tell me your email id ')        
-
-
-       
+        return post_facebook_message(fbid,'Please tell me your email id ')   
                               
         response_msg = json.dumps(response_object)
-        requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
+        requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
