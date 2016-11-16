@@ -603,11 +603,6 @@ class MyChatBotView(generic.View):
                     pass   
 
 
-
-
-                  
-
-
             return HttpResponse()
 
 
@@ -617,25 +612,25 @@ class MyChatBotView(generic.View):
 def handle_quickreply(fbid):
     
     response_object =   {
-                              "recipient":{
-                                "id":"fbid"
+                          "recipient":{
+                            "id":fbid
+                          },
+                          "message":{
+                            "text":"Pick a color:",
+                            "quick_replies":[
+                              {
+                                "content_type":"text",
+                                "title":"Red",
+                                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                               },
-                              "message":{
-                                "text":"Pick a color:",
-                                "quick_replies":[
-                                  {
-                                    "content_type":"text",
-                                    "title":"Red",
-                                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                                  },
-                                  {
-                                    "content_type":"text",
-                                    "title":"Green",
-                                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                                  }
-                                ]
+                              {
+                                "content_type":"text",
+                                "title":"Green",
+                                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                               }
-                            }
+                            ]
+                          }
+                        }
     return json.dumps(response_object)
 
 
