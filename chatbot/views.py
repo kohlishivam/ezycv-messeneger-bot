@@ -47,9 +47,7 @@ def post_facebook_message(fbid,message_text):
     elif message_text == 'options':
         response_msg = handle_quickreply(fbid)
 
-    elif message_text == 'options_skills':
-        response_msg = handle_quickreply_skills(fbid)   
-        
+    
 
     else:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
@@ -410,6 +408,45 @@ class MyChatBotView(generic.View):
                         pp.state='10'
                         pp.save()
                         post_facebook_message(sender_id,'options')
+
+
+                    elif message_text == 'EDUCATIONAL QUALIFICATIONS':
+                        post_facebook_message(sender_id,'Go ahead type your education qualification separated by commas(for now max 4)')
+                        pp.state = '11'
+                        pp.save()
+
+                    elif pp.state == '11':
+                        input_qualifications = message_text
+                        aa=input_qualifications.split(',')
+                        if len(aa)==4:
+                            pp.skills_1 = aa[0]
+                            pp.skills_2 = aa[1]
+                            pp.skills_3 = aa[2]
+                            pp.skills_4 = aa[3]
+                        if len(aa)==3:
+                            pp.skills_1 = aa[0]
+                            pp.skills_2 = aa[1]
+                            pp.skills_3 = aa[2]
+                            
+                        if len(aa)==2:
+                            pp.skills_1 = aa[0]
+                            pp.skills_2 = aa[1]
+                            
+                        if len(aa)==1:
+                            pp.skills_1 = aa[0]
+                            
+                        pp.state='12'
+                        pp.save()
+                        post_facebook_message(sender_id,'options')
+
+
+
+                    elif message_text == 'THATS ALL':
+                        post_facebook_message(sender_id,'resume download')
+                        pp.state = '111'
+                        pp.save()
+
+
                         
 
                     
@@ -469,7 +506,7 @@ def handle_quickreply(fbid):
                               },
                               {
                                 "content_type":"text",
-                                "title":"THAT'S ALL",
+                                "title":"THATS ALL",
                                 "payload":"finish"
                               }
                             ]
