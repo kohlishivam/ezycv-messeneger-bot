@@ -615,7 +615,6 @@ class MyChatBotView(generic.View):
 
 
 def handle_quickreply(fbid):
-    post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
     
     response_object =   {
                               "recipient":{
