@@ -377,6 +377,8 @@ class MyChatBotView(generic.View):
 
  
                     elif pp.state == '7':
+                        pp.state='2333'
+                        pp.save()
                         post_facebook_message(sender_id,'options')
 
                     elif message_text == 'SKILLS':
