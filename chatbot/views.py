@@ -390,11 +390,10 @@ class MyChatBotView(generic.View):
                     elif pp.state == '9':
                         input_skills = message_text
                         aa=input_skills.split(',')
-
                         pp.skills_1 = aa[0]
                         pp.skills_2 = aa[1]
-                        pp.skills_3 = aa[2]
-                        pp.skills_4 = aa[3]
+                        #pp.skills_3 = aa[2]
+                        #pp.skills_4 = aa[3]
                         pp.state='10'
                         pp.save()
                         post_facebook_message(sender_id,'options')
