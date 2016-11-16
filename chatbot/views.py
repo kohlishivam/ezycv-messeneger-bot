@@ -395,7 +395,7 @@ class MyChatBotView(generic.View):
                             pp.skills_2 = aa[1]
                             pp.skills_3 = aa[2]
                             pp.skills_4 = aa[3]
-                        if len(aa)==2:
+                        if len(aa)==3:
                             pp.skills_1 = aa[0]
                             pp.skills_2 = aa[1]
                             pp.skills_3 = aa[2]
