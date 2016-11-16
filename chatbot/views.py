@@ -383,17 +383,30 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'options')
 
                     elif message_text == 'SKILLS':
-                        post_facebook_message(sender_id,'Go ahead type your skills separated by commas(for now enter 4')
+                        post_facebook_message(sender_id,'Go ahead type your skills separated by commas(for now max 4)')
                         pp.state = '9'
                         pp.save()
 
                     elif pp.state == '9':
                         input_skills = message_text
                         aa=input_skills.split(',')
-                        pp.skills_1 = aa[0]
-                        pp.skills_2 = aa[1]
-                        #pp.skills_3 = aa[2]
-                        #pp.skills_4 = aa[3]
+                        if len(aa)==4:
+                            pp.skills_1 = aa[0]
+                            pp.skills_2 = aa[1]
+                            pp.skills_3 = aa[2]
+                            pp.skills_4 = aa[3]
+                        if len(aa)==2:
+                            pp.skills_1 = aa[0]
+                            pp.skills_2 = aa[1]
+                            pp.skills_3 = aa[2]
+                            
+                        if len(aa)==2:
+                            pp.skills_1 = aa[0]
+                            pp.skills_2 = aa[1]
+                            
+                        if len(aa)==1:
+                            pp.skills_1 = aa[0]
+                            
                         pp.state='10'
                         pp.save()
                         post_facebook_message(sender_id,'options')
