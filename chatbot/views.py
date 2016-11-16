@@ -32,8 +32,7 @@ def userdeatils(fbid):
     data =json.loads(resp.text)
     return data         
 
-          
-
+        
 
 def post_facebook_message(fbid,message_text):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
