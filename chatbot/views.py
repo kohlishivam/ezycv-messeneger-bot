@@ -417,23 +417,23 @@ class MyChatBotView(generic.View):
 
                     elif pp.state == '11':
                         input_qualifications = message_text
-                        aa=input_qualifications.split(',')
-                        if len(aa)==4:
-                            pp.skills_1 = aa[0]
-                            pp.skills_2 = aa[1]
-                            pp.skills_3 = aa[2]
-                            pp.skills_4 = aa[3]
+                        aaa=input_qualifications.split(',')
+                        if len(aaa)==4:
+                            pp.educational_qualifications_1 = aaa[0]
+                            pp.educational_qualifications_2 = aaa[1]
+                            pp.educational_qualifications_3 = aaa[2]
+                            pp.educational_qualifications_4 = aaa[3]
                         if len(aa)==3:
-                            pp.skills_1 = aa[0]
-                            pp.skills_2 = aa[1]
-                            pp.skills_3 = aa[2]
+                            pp.educational_qualifications_1 = aaa[0]
+                            pp.educational_qualifications_2 = aaa[1]
+                            pp.educational_qualifications_3 = aaa[2]
                             
                         if len(aa)==2:
-                            pp.skills_1 = aa[0]
-                            pp.skills_2 = aa[1]
+                            pp.educational_qualifications_1 = aaa[0]
+                            pp.educational_qualifications_2 = aaa[1]
                             
                         if len(aa)==1:
-                            pp.skills_1 = aa[0]
+                            pp.educational_qualifications_1 = aaa[0]
                             
                         pp.state='12'
                         pp.save()
