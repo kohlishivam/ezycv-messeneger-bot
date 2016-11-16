@@ -225,6 +225,10 @@ class MyChatBotView(generic.View):
                         print  'hihihihihihihihihih'+ sender_id
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                         post_facebook_message(sender_id,'selection')
+
+                    elif message_text == 'options':
+                        post_facebook_message(sender_id,'options')
+
                            
                             
                     elif p.state =='1':
@@ -576,11 +580,6 @@ class MyChatBotView(generic.View):
                         pp.save()
                         post_facebook_message(sender_id,' you are done with providing the detail, now click the link that will automatically download a pdf name mycv.pdf') 
                         post_facebook_message(sender_id,'resume download')
-
-
-                    elif message_text == 'options':
-                        post_facebook_message(sender_id,'options')
-
 
                     else:
                         post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation')
