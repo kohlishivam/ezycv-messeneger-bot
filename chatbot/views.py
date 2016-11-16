@@ -423,16 +423,16 @@ class MyChatBotView(generic.View):
                             pp.educational_qualifications_2 = aaa[1]
                             pp.educational_qualifications_3 = aaa[2]
                             pp.educational_qualifications_4 = aaa[3]
-                        if len(aa)==3:
+                        if len(aaa)==3:
                             pp.educational_qualifications_1 = aaa[0]
                             pp.educational_qualifications_2 = aaa[1]
                             pp.educational_qualifications_3 = aaa[2]
                             
-                        if len(aa)==2:
+                        if len(aaa)==2:
                             pp.educational_qualifications_1 = aaa[0]
                             pp.educational_qualifications_2 = aaa[1]
                             
-                        if len(aa)==1:
+                        if len(aaa)==1:
                             pp.educational_qualifications_1 = aaa[0]
                             
                         pp.state='12'
