@@ -410,7 +410,7 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'options')
 
 
-                    elif message_text == 'EDUCATIONAL QUALIFICATIONS':
+                    elif message_text == 'QUALIFICATIONS':
                         post_facebook_message(sender_id,'Go ahead type your education qualification separated by commas(for now max 4)')
                         pp.state = '11'
                         pp.save()
@@ -491,7 +491,7 @@ def handle_quickreply(fbid):
                               },
                               {
                                 "content_type":"text",
-                                "title":"EDUCATIONAL QUALIFICATIONS",
+                                "title":"QUALIFICATIONS",
                                 "payload":"educational qualificationa"
                               },
                               {
