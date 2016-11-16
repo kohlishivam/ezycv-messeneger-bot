@@ -375,217 +375,12 @@ class MyChatBotView(generic.View):
                         pp.state='7'
                         pp.save()
                         post_facebook_message(sender_id,'okay, now your Summary or Objective.   KEY POINTS to be included are     1)Start with your professional title     2)Add two or three achievements    , Your professional tittle and a line describing you  ')
+
+ 
+                    elif pp.state == '7':
+                        pp.state ='8'
+                        post_facebook_message(sender_id,'options')
                     
-                    elif pp.state =='7':
-                        pp.objective_line1 = message_text
-                        pp.state='8'
-                        pp.save()
-                        post_facebook_message(sender_id,'Okay, your achievements if any')
-
-
-                    elif pp.state =='8':
-                        pp.objective_achievements = message_text
-                        pp.state='9'
-                        pp.save()
-                        post_facebook_message(sender_id,'Great , now tell me your educational qualification  include your year of passing , institute name,first')
-
-                    elif pp.state =='9':
-                        pp.educational_qualifications_1 = message_text
-                        pp.state ='10'
-                        pp.save()
-                        post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state=='10':
-                        for i in range(1):
-                            if message_text == 'no':
-                                pp.state = '12'
-                                pp.save()
-                                post_facebook_message(sender_id,'COOL,type no to continue')
-
-                            else :
-                                pp.educational_qualifications_2 = message_text
-                                pp.state = '11'
-                                pp.save()
-                                post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state=='11':
-                        for i in range(1):
-                            if message_text == 'no':
-                                pp.state = '12'
-                                pp.save()
-                                post_facebook_message(sender_id,'COOL,type no to continue')
-
-
-                            else :
-                                pp.educational_qualifications_3 = message_text
-                                pp.state = '12'
-                                pp.save()
-                                post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state =='12':
-                        if message_text=='no' :
-                            pp.state ='13'
-                            pp.save()
-                            post_facebook_message(sender_id,'Great , now tell me your skills in your field,first')
-                        
-                        else:
-                            pp.educational_qualifications_4 = message_text
-                            pp.state ='13'
-                            pp.save()
-                            post_facebook_message(sender_id,'Great , now tell me your skills in your field,first')
-
-                
-                    elif pp.state =='13':
-                        pp.skills_1 = message_text
-                        pp.state ='15'
-                        pp.save()
-                        post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state=='15':
-                        for i in range(1):
-                            if message_text == 'no':
-                                pp.state = '17'
-                                pp.save()
-                                post_facebook_message(sender_id,'COOL,type no to continue')
-
-
-                            else :
-                                pp.skills_2 = message_text
-                                pp.state = '16'
-                                pp.save()
-                                post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state=='16':
-                        for i in range(1):
-                            if message_text == 'no':
-                                pp.state = '17'
-                                pp.save()
-                                post_facebook_message(sender_id,'COOL,type no to continue')
-
-
-                            else :
-                                pp.skills_3 = message_text
-                                pp.state = '17'
-                                pp.save()
-                                post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state =='17':
-                        if message_text=='no':
-                            pp.state ='18'
-                            pp.save()
-                            post_facebook_message(sender_id,'Great , now tell me your experience,first')
-
-                        else:
-                            pp.skills_4 = message_text
-                            pp.state ='18'
-                            pp.save()
-                            post_facebook_message(sender_id,'Great , now tell me your experience,first')
-                   
-                    elif pp.state =='18':
-                        pp.experience_1 = message_text
-                        pp.state ='20'
-                        pp.save()
-                        post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state=='20':
-                        for i in range(1):
-                            if message_text == 'no':
-                                pp.state = '22'
-                                pp.save()
-                                post_facebook_message(sender_id,'COOL,type no to continue')
-
-
-                            else :
-                                pp.experience_2 = message_text
-                                pp.state = '21'
-                                pp.save()
-                                post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state=='21':
-                        for i in range(1):
-                            if message_text == 'no':
-                                pp.state = '22'
-                                pp.save()
-                                post_facebook_message(sender_id,'COOL,type no to continue')
-
-
-                            else :
-                                pp.experience_3 = message_text
-                                pp.state = '22'
-                                pp.save()
-                                post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state =='22':
-                        if message_text == 'no':
-                            pp.state ='23'
-                            pp.save()
-                            post_facebook_message(sender_id,'Great , now tell me your hobbies,first')
-
-                        else:
-                            pp.experience_4 = message_text
-                            pp.state ='23'
-                            pp.save()
-                            post_facebook_message(sender_id,'Great , now tell me your hobbies,first')
-
-                    
-
-                    elif pp.state =='23':
-                        pp.hobbies_1 = message_text
-                        pp.state ='25'
-                        pp.save()
-                        post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state=='25':
-                        for i in range(1):
-                            if message_text == 'no':
-                                pp.state = '28'
-                                pp.save()
-                                post_facebook_message(sender_id,'COOL,type no to continue')
-
-
-                            else :
-                                pp.hobbies_2 = message_text
-                                pp.state = '26'
-                                pp.save()
-                                post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state=='26':
-                        for i in range(1):
-                            if message_text == 'no':
-                                pp.state = '28'
-                                pp.save()
-                                post_facebook_message(sender_id,'COOL,type no to continue')
-
-
-                            else :
-                                pp.hobbies_3 = message_text
-                                pp.state = '27'
-                                pp.save()
-                                post_facebook_message(sender_id,'Any more? if no simply type no')
-
-                    elif pp.state =='27':
-                        if message_text == 'no':
-                            pp.state ='28'
-                            pp.save()
-                            post_facebook_message(sender_id,'name')
-
-                        else:
-                            pp.experience_4 = message_text
-                            pp.state ='28'
-                            pp.save()
-                            post_facebook_message(sender_id,'name')
-                    
-                    elif pp.state =='28':
-                        pp.name = message_text
-                        pp.save()
-                        post_facebook_message(sender_id,' you are done with providing the detail, now click the link that will automatically download a pdf name mycv.pdf') 
-                        post_facebook_message(sender_id,'resume download')
-
-                    else:
-                        post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation')
-
-
-
                 except Exception as e:
                     print e
                     pass
@@ -616,17 +411,32 @@ def handle_quickreply(fbid):
                             "id":fbid
                           },
                           "message":{
-                            "text":"Pick a color:",
+                            "text":"Select your coloumn:",
                             "quick_replies":[
                               {
                                 "content_type":"text",
-                                "title":"Red",
+                                "title":"SKILLS",
+                                "payload":"skills"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"EDUCATIONAL QUALIFICATIONS",
+                                "payload":"educational qualificationa"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"EXPERIENCE",
                                 "payload":"RED"
                               },
                               {
                                 "content_type":"text",
-                                "title":"Green",
-                                "payload":"GREEN"
+                                "title":"HOBBIES",
+                                "payload":"RED"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"THAT'S ALL",
+                                "payload":"finish"
                               }
                             ]
                           }
@@ -862,11 +672,6 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
 
-    elif payload == 'RED':
-        return post_facebook_message(fbid,'RED HUN MAI')  
-
-    elif payload == 'GREEN':
-        return post_facebook_message(fbid,'GREEN HUN MAI')
 
 
 
