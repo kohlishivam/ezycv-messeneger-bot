@@ -306,19 +306,19 @@ class MyChatBotView(generic.View):
                         p.sub1 = message_text
                         p.state='14'
                         p.save()
-                        post_facebook_message(sender_id,' send me the details of the 2st sub event  ') 
+                        post_facebook_message(sender_id,' Send me the details of the 2st sub event  ') 
                     
                     elif p.state =='14':
                         p.sub2 = message_text
                         p.state='15'
                         p.save()
-                        post_facebook_message(sender_id,' send me the details of the 3st sub event  ')
+                        post_facebook_message(sender_id,' Send me the details of the 3st sub event  ')
 
                     elif p.state =='15':
                         p.sub3 = message_text
                         p.state='16'
                         p.save()
-                        post_facebook_message(sender_id,' send me the details of the 4st sub event  ')
+                        post_facebook_message(sender_id,' Send me the details of the 4st sub event  ')
                         print 'hi hi hi hi hi hi ' + sender_id
                         print 'hi hi hi hi hi hi ' + sender_id
                         print 'hi hi hi hi hi hi ' + sender_id
@@ -333,8 +333,8 @@ class MyChatBotView(generic.View):
                         print sender_id
                         
 
-                        post_facebook_message(sender_id,' please select one of the templates given below ')
-                        post_facebook_message(sender_id,'templates')                        
+                        post_facebook_message(sender_id,' Please select one of the templates given below ')
+                        post_facebook_message(sender_id,'Templates')                        
                         
 
 
@@ -813,9 +813,6 @@ def set_menu():
 
 
 
-
-
-
 def handle_postback(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
@@ -849,8 +846,6 @@ def handle_postback(fbid,payload):
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)   
-
-
 
 
 
