@@ -515,29 +515,6 @@ def handle_quickreply(fbid):
     return json.dumps(response_object)
 
 
-def handle_quickreply_skills(fbid):
-    
-    response_object =   {
-                          "recipient":{
-                            "id":fbid
-                          },
-                          "message":{
-                            "text":"Select your coloumn:",
-                            "quick_replies":[
-                              {
-                                "content_type":"text",
-                                "title":"ADD SKILLS",
-                                "payload":"skills"
-                              },
-                              {
-                                "content_type":"text",
-                                "title":"NO MORE",
-                                "payload":"finish"
-                              }
-                            ]
-                          }
-                        }
-    return json.dumps(response_object)
 
 
 
