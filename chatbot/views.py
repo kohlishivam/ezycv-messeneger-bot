@@ -534,6 +534,12 @@ def resume(request,id):
     #print dir(p)
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
+    a= userdeatils(sender_id)
+    pp.name = '%s %s'%(a['first_name'],a['last_name'])
+
+
+
+
     p.setFont("Helvetica", 20)
     p.drawString(230,820, pp.name)
     p.setFont("Helvetica", 8)
