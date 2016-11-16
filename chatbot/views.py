@@ -377,27 +377,29 @@ class MyChatBotView(generic.View):
 
  
                     elif pp.state == '7':
-                        pp.state='2333'
+                        pp.objective_line1 = message_text
+                        pp.state='8'
                         pp.save()
                         post_facebook_message(sender_id,'options')
 
                     elif message_text == 'SKILLS':
-                        post_facebook_message(sender_id,'Go ahead type your skills')
-                        pp.state = '8'
+                        post_facebook_message(sender_id,'Go ahead type your skills separated by commas(for now enter 4')
+                        pp.state = '9'
                         pp.save()
-                        post_facebook_message(sender_id,'options_skills')
 
-                    elif message_text == 'SKILLS':
-                        skills_1 = message_text
-                        post_facebook_message(sender_id,'options_skills')
+                    elif pp.state == '9':
+                        input_skills = message_text
+                        input_skills.split(',')
+                        skills_1 = input_skills[1]
+                        skills_2 = input_skills[2]
+                        skills_3 = input_skills[3]
+                        skills_4 = input_skills[4]
+                        pp.state='10'
+                        pp.save()
+                        post_facebook_message(sender_id,'options')
+                        
 
-                    elif message_text == 'SKILLS':
-                        skills_2 = message_text
-                        post_facebook_message(sender_id,'options_skills')
-
-                    elif message_text == 'SKILLS':
-                        skills_3 = message_text
-                        post_facebook_message(sender_id,'options_skills')
+                    
 
                     
                 except Exception as e:
