@@ -47,9 +47,7 @@ def post_facebook_message(fbid,message_text):
 
     elif message_text == 'resume download':
         response_msg = card_resume(fbid) 
-
-    elif message_text == 'options':
-        response_msg = handle_quickreply(fbid)   
+  
         
 
     else:
@@ -578,9 +576,7 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'resume download')
 
 
-                    elif message_text == 'options':
-                        post_facebook_message(sender_id,'options')
-
+                    
 
                     else:
                         post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation')
@@ -610,46 +606,6 @@ class MyChatBotView(generic.View):
 
 
             return HttpResponse()
-
-
-
-
-
-
-
-
-
-
-
-def handle_quickreply(fbid):
-    post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
-    
-    response_object =   {
-                              "recipient":{
-                                "id":"fbid"
-                              },
-                              "message":{
-                                "text":"Pick a color:",
-                                "quick_replies":[
-                                  {
-                                    "content_type":"text",
-                                    "title":"Red",
-                                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                                  },
-                                  {
-                                    "content_type":"text",
-                                    "title":"Green",
-                                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                                  }
-                                ]
-                              }
-                            }
-    return json.dumps(response_object)
-
-
-
-
-
 
 
 
