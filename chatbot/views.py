@@ -34,11 +34,7 @@ def userdeatils(fbid):
 
 def post_facebook_message(fbid,message_text):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    # response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
-    # status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-
     
-    # print status.json()
     if message_text == 'templates':
         response_msg = cards(fbid)
 
@@ -49,7 +45,10 @@ def post_facebook_message(fbid,message_text):
         response_msg = card_resume(fbid) 
 
     elif message_text == 'options':
-        response_msg = handle_quickreply(fbid)   
+        response_msg = handle_quickreply(fbid)
+
+    elif message_text == 'options_skills':
+        response_msg = handle_quickreply_skills(fbid)   
         
 
     else:
@@ -378,8 +377,26 @@ class MyChatBotView(generic.View):
 
  
                     elif pp.state == '7':
-                        pp.state ='8'
                         post_facebook_message(sender_id,'options')
+
+                    elif message_text == 'SKILLS':
+                        post_facebook_message(sender_id,'Go ahead type your skills')
+                        pp.state = '8'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+                    elif message_text == 'SKILLS':
+                        skills_1 = message_text
+                        post_facebook_message(sender_id,'options_skills')
+
+                    elif message_text == 'SKILLS':
+                        skills_2 = message_text
+                        post_facebook_message(sender_id,'options_skills')
+
+                    elif message_text == 'SKILLS':
+                        skills_3 = message_text
+                        post_facebook_message(sender_id,'options_skills')
+
                     
                 except Exception as e:
                     print e
@@ -442,6 +459,32 @@ def handle_quickreply(fbid):
                           }
                         }
     return json.dumps(response_object)
+
+
+def handle_quickreply_skills(fbid):
+    
+    response_object =   {
+                          "recipient":{
+                            "id":fbid
+                          },
+                          "message":{
+                            "text":"Select your coloumn:",
+                            "quick_replies":[
+                              {
+                                "content_type":"text",
+                                "title":"ADD SKILLS",
+                                "payload":"skills"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"NO MORE",
+                                "payload":"finish"
+                              }
+                            ]
+                          }
+                        }
+    return json.dumps(response_object)
+
 
 
 
