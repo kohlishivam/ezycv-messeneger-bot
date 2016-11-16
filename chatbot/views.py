@@ -621,12 +621,12 @@ def handle_quickreply(fbid):
                               {
                                 "content_type":"text",
                                 "title":"Red",
-                                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                                "payload":"RED"
                               },
                               {
                                 "content_type":"text",
                                 "title":"Green",
-                                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                                "payload":"GREEN"
                               }
                             ]
                           }
@@ -879,7 +879,14 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'Please tell me your email id ')   
                               
         response_msg = json.dumps(response_object)
-        requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)   
+        requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg) 
+
+
+    elif payload == 'RED':
+        return post_facebook_message(fbid,'RED HUN MAI')  
+
+    elif payload == 'GREEN':
+        return post_facebook_message(fbid,'GREEN HUN MAI')
 
 
 
