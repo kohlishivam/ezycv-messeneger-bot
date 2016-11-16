@@ -861,6 +861,15 @@ def handle_postback(fbid,payload):
     elif payload == 'MENU_OUTPUT':
         return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
+
+    elif payload == 'RED':
+        return post_facebook_message(fbid,'RED HUN MAI')  
+
+    elif payload == 'GREEN':
+        return post_facebook_message(fbid,'GREEN HUN MAI')
+
+
+
     elif payload == "EVENT" :
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '1'
@@ -876,17 +885,14 @@ def handle_postback(fbid,payload):
         pp.greetings = 'TRUE'
         pp.save()
 
-        return post_facebook_message(fbid,'Please tell me your email id ')   
+        return post_facebook_message(fbid,'Please tell me your email id ')  
+
+
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg) 
 
 
-    elif payload == 'RED':
-        return post_facebook_message(fbid,'RED HUN MAI')  
-
-    elif payload == 'GREEN':
-        return post_facebook_message(fbid,'GREEN HUN MAI')
 
 
 
