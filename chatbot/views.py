@@ -374,7 +374,7 @@ class MyChatBotView(generic.View):
                         pp.city = message_text
                         pp.state='7'
                         pp.save()
-                        post_facebook_message(sender_id,'okay, now your Summary or Objective.   KEY POINTS to be included are     1)Start with your professional title     2)Add two or three achievements    , Your professional tittle and a line describing you  ')
+                        post_facebook_message(sender_id,'okay, now your Summary or Objective. ')
 
  
                     elif pp.state == '7':
@@ -462,11 +462,6 @@ def quickreply_skills(fbid):
                             "quick_replies":[
                               {
                                 "content_type":"text",
-                                "title":"thats all",
-                                "payload":"done_skills"
-                              },
-                              {
-                                "content_type":"text",
                                 "title":"skills_1",
                                 "payload":"add_skills_1"
                               },
@@ -484,7 +479,12 @@ def quickreply_skills(fbid):
                                 "content_type":"text",
                                 "title":"skills_4",
                                 "payload":"add_skills_4"
-                              }
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"thats all",
+                                "payload":"done_skills"
+                              },
                             ]
                           }
                         }
