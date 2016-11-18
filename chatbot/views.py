@@ -379,12 +379,31 @@ class MyChatBotView(generic.View):
  
                     elif pp.state == '7':
                         pp.objective_line1 = message_text
-                        pp.state='8'
+                        pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options')
 
-                    elif pp.state == '111':
+                    elif pp.state == '1111':
                         pp.skills_1 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+                    elif pp.state == '1112':
+                        pp.skills_2 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+                    elif pp.state == '1113':
+                        pp.skills_3 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+                    elif pp.state == '1114':
+                        pp.skills_4 = message_text
+                        pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_skills')
 
@@ -392,6 +411,7 @@ class MyChatBotView(generic.View):
                     
 
                     
+
                 except Exception as e:
                     print e
                     pass
@@ -452,15 +472,19 @@ def quickreply_skills(fbid):
     return json.dumps(response_object)
 
 
-
+def help():
+    return 1
 
 def handle_quickreply(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
 
+
+
     if payload == 'skills':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
-        pp.state = '111'
+        i = help()
+        pp.state = '111%d'%i
         pp.save()
         return post_facebook_message(fbid,'ENTER YOUR SKILLS')
 
@@ -468,10 +492,14 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(fbid,'Master-Event.github.io')
 
     elif payload == 'done_skills':
-        return post_facebook_message(fbid,'wait')
+        return post_facebook_message(fbid,'options')
 
     elif payload == 'add_skills':
-        return post_facebook_message(fbid,'wait')
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        i = i+1
+        pp.state = '111%d'%i
+        pp.save()
+        return post_facebook_message(fbid,'ENTER YOUR SKILLS')
 
 
 def quickreply(fbid):
