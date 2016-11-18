@@ -497,9 +497,6 @@ def handle_quickreply(fbid,payload):
 
 
     if payload == 'skills':
-        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
-        pp.state = '1111'
-        pp.save()
         return post_facebook_message(fbid,'options_skills')
 
     elif payload == 'educational qualifications':
