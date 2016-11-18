@@ -496,7 +496,9 @@ def handle_quickreply(fbid,payload):
 
     elif payload == 'add_skills':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
-        asss = i+1
+        i = help()
+        ddddd = i
+        asss = ddddd+1
         pp.state = '111%d'%asss
         pp.save()
         return post_facebook_message(fbid,'ENTER YOUR SKILLS')
