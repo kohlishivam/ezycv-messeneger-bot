@@ -459,12 +459,9 @@ def handle_postback(fbid,payload):
     output_text = 'Payload Recieved: ' + payload
 
     if payload == 'skills':
-        p = event.objects.get_or_create(fbid =fbid)[0]
-        p.state = '111'
-        p.greetings = 'TRUE'
-
-        p.save()
-
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '111'
+        pp.save()
         return post_facebook_message(fbid,'ENTER YOUR SKILLS')
 
     elif payload == 'educational qualifications':
