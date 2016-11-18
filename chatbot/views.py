@@ -384,7 +384,28 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'options')
 
                     elif pp.state == '1111':
-                        pp.skills_1 = message_text
+                        pp.skills_4 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+
+                    elif pp.state == '1112':
+                        pp.skills_4 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+
+                    elif pp.state == '1113':
+                        pp.skills_4 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+
+                    elif pp.state == '1114':
+                        pp.skills_4 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_skills')
@@ -430,7 +451,6 @@ class MyChatBotView(generic.View):
             return HttpResponse()
 
 
-
 def quickreply_skills(fbid):
     
     response_object =   {
@@ -448,7 +468,22 @@ def quickreply_skills(fbid):
                               {
                                 "content_type":"text",
                                 "title":"add more",
-                                "payload":"add_skills"
+                                "payload":"add_skills_1"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"add more",
+                                "payload":"add_skills_2"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"add more",
+                                "payload":"add_skills_3"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"add more",
+                                "payload":"add_skills_4"
                               }
                             ]
                           }
@@ -468,13 +503,34 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(fbid,'ENTER YOUR SKILLS')
 
     elif payload == 'educational qualifications':
-        return post_facebook_message(fbid,'Master-Event.github.io')
+        return post_facebook_message(fbid,'options')
 
     elif payload == 'done_skills':
         return post_facebook_message(fbid,'options')
 
-    elif payload == 'add_skills':
-        return post_facebook_message(fbid,'wait')
+    elif payload == 'add_skill_1':
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '1111'
+        pp.save()
+        return post_facebook_message(fbid,'Enter your skills')
+
+    elif payload == 'add_skill_2':
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '1112'
+        pp.save()
+        return post_facebook_message(fbid,'Enter your skills')
+
+    elif payload == 'add_skill_3':
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '1113'
+        pp.save()
+        return post_facebook_message(fbid,'Enter your skills')
+
+    elif payload == 'add_skill_4':
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '1114'
+        pp.save()
+        return post_facebook_message(fbid,'Enter your skills')
 
 
 def quickreply(fbid):
@@ -515,11 +571,6 @@ def quickreply(fbid):
                           }
                         }
     return json.dumps(response_object)
-
-
-
-
-
 
 def resume(request,id):
     # Create the HttpResponse object with the appropriate PDF headers.
