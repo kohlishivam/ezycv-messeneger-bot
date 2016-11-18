@@ -505,25 +505,25 @@ def handle_quickreply(fbid,payload):
     elif payload == 'done_skills':
         return post_facebook_message(fbid,'options')
 
-    elif payload == 'add_skill_1':
+    elif payload == 'add_skills_1':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1111'
         pp.save()
         return post_facebook_message(fbid,'Enter your skills')
 
-    elif payload == 'add_skill_2':
+    elif payload == 'add_skills_2':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1112'
         pp.save()
         return post_facebook_message(fbid,'Enter your skills')
 
-    elif payload == 'add_skill_3':
+    elif payload == 'add_skills_3':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1113'
         pp.save()
         return post_facebook_message(fbid,'Enter your skills')
 
-    elif payload == 'add_skill_4':
+    elif payload == 'add_skills_4':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1114'
         pp.save()
