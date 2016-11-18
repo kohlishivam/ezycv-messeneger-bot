@@ -454,7 +454,7 @@ def quickreply_skills(fbid):
 
 
 
-def handle_postback(fbid,payload):
+def handle_quickreply(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
 
