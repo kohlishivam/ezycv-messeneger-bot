@@ -384,26 +384,15 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'options')
 
                     elif pp.state == '1111':
-                        i=1
-                        
-                        if i=1 :
-                            pp.skills_1 = message_text
-                            i = i+1
-
-                        elif i=2 :
-                            pp.skills_2 = message_text
-                            i = i+1
-
-                        elif i=3 :
-                            pp.skills_3 = message_text
-                            i = i+1
-
-                        elif i=4 :
-                            pp.skills_4 = message_text
-
+                        pp.skills_1 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_skills')
+
+        
+
+
+                    
 
                     
 
@@ -466,7 +455,6 @@ def quickreply_skills(fbid):
                         }
     return json.dumps(response_object)
 
-
 def handle_quickreply(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
@@ -486,10 +474,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(fbid,'options')
 
     elif payload == 'add_skills':
-        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
-        pp.state = '1111'
-        pp.save()
-        return post_facebook_message(fbid,'ENTER YOUR SKILLS')
+        return post_facebook_message(fbid,'wait')
 
 
 def quickreply(fbid):
