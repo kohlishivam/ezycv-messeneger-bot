@@ -379,7 +379,7 @@ class MyChatBotView(generic.View):
  
                     elif pp.state == '7':
                         pp.objective_line1 = message_text
-                        #pp.state='8'
+                        pp.state='8'
                         pp.save()
                         post_facebook_message(sender_id,'options')
 
@@ -412,7 +412,7 @@ class MyChatBotView(generic.View):
 
                   
                 try:
-                    if 'quick_replies' in message['message']:
+                    if 'quick_reply' in message['message']:
                         handle_quickreply(message['sender']['id'],
                         message['message']['quick_reply']['payload'])
                         return HttpResponse()
