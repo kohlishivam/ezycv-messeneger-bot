@@ -45,7 +45,10 @@ def post_facebook_message(fbid,message_text):
         response_msg = card_resume(fbid) 
 
     elif message_text == 'options':
-        response_msg = handle_quickreply(fbid)
+        response_msg = quickreply(fbid)
+
+    elif message_text == 'options_skills':
+        response_msg = quickreply_skills(fbid)
 
     
 
@@ -376,78 +379,15 @@ class MyChatBotView(generic.View):
  
                     elif pp.state == '7':
                         pp.objective_line1 = message_text
-                        pp.state='8'
+                        #pp.state='8'
                         pp.save()
                         post_facebook_message(sender_id,'options')
 
-                    elif message_text == 'SKILLS':
-                        post_facebook_message(sender_id,'Go ahead type your skills separated by commas(for now max 4)')
-                        pp.state = '9'
+                    elif pp.state == '111':
+                        pp.skills_1 = message_text
                         pp.save()
+                        post_facebook_message(sender_id,'options_skills')
 
-                    elif pp.state == '9':
-                        input_skills = message_text
-                        aa=input_skills.split(',')
-                        if len(aa)==4:
-                            pp.skills_1 = aa[0]
-                            pp.skills_2 = aa[1]
-                            pp.skills_3 = aa[2]
-                            pp.skills_4 = aa[3]
-                        if len(aa)==3:
-                            pp.skills_1 = aa[0]
-                            pp.skills_2 = aa[1]
-                            pp.skills_3 = aa[2]
-                            
-                        if len(aa)==2:
-                            pp.skills_1 = aa[0]
-                            pp.skills_2 = aa[1]
-                            
-                        if len(aa)==1:
-                            pp.skills_1 = aa[0]
-                            
-                        pp.state='10'
-                        pp.save()
-                        post_facebook_message(sender_id,'options')
-
-
-                    elif message_text == 'QUALIFICATIONS':
-                        post_facebook_message(sender_id,'Go ahead type your education qualification separated by commas(for now max 4)')
-                        pp.state = '11'
-                        pp.save()
-
-                    elif pp.state == '11':
-                        input_qualifications = message_text
-                        aaa=input_qualifications.split(',')
-                        if len(aaa)==4:
-                            pp.educational_qualifications_1 = aaa[0]
-                            pp.educational_qualifications_2 = aaa[1]
-                            pp.educational_qualifications_3 = aaa[2]
-                            pp.educational_qualifications_4 = aaa[3]
-                        if len(aaa)==3:
-                            pp.educational_qualifications_1 = aaa[0]
-                            pp.educational_qualifications_2 = aaa[1]
-                            pp.educational_qualifications_3 = aaa[2]
-                            
-                        if len(aaa)==2:
-                            pp.educational_qualifications_1 = aaa[0]
-                            pp.educational_qualifications_2 = aaa[1]
-                            
-                        if len(aaa)==1:
-                            pp.educational_qualifications_1 = aaa[0]
-                            
-                        pp.state='12'
-                        pp.save()
-                        post_facebook_message(sender_id,'options')
-
-
-
-                    elif message_text == 'THATS ALL':
-                        post_facebook_message(sender_id,'resume download')
-                        pp.state = '111'
-                        pp.save()
-
-
-                        
 
                     
 
@@ -466,16 +406,78 @@ class MyChatBotView(generic.View):
 
                 except Exception as e:
                     print e
-                    pass   
+                    pass 
+
+
+
+                  
+                try:
+                    if 'quick_reply' in message['message']:
+                        handle_quickreply(message['sender']['id'],
+                        message['message']['quick_reply']['payload'])
+                        return HttpResponse()
+                    else:
+                        pass
+                except Exception as e:
+                    print e
+                    pass  
 
 
             return HttpResponse()
 
 
 
+def quickreply_skills(fbid):
+    
+    response_object =   {
+                          "recipient":{
+                            "id":fbid
+                          },
+                          "message":{
+                            "text":"Select your coloumn:",
+                            "quick_replies":[
+                              {
+                                "content_type":"text",
+                                "title":"thats all",
+                                "payload":"done_skills"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"add more",
+                                "payload":"add_skills"
+                              }
+                            ]
+                          }
+                        }
+    return json.dumps(response_object)
 
 
-def handle_quickreply(fbid):
+
+
+def handle_postback(fbid,payload):
+    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    output_text = 'Payload Recieved: ' + payload
+
+    if payload == 'skills':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '111'
+        p.greetings = 'TRUE'
+
+        p.save()
+
+        return post_facebook_message(fbid,'ENTER YOUR SKILLS')
+
+    elif payload == 'educational qualifications':
+        return post_facebook_message(fbid,'Master-Event.github.io')
+
+    elif payload == 'done_skills':
+        return post_facebook_message(fbid,'wait')
+
+    elif payload == 'add_skills':
+        return post_facebook_message(fbid,'wait')
+
+
+def quickreply(fbid):
     
     response_object =   {
                           "recipient":{
@@ -492,7 +494,7 @@ def handle_quickreply(fbid):
                               {
                                 "content_type":"text",
                                 "title":"QUALIFICATIONS",
-                                "payload":"educational qualificationa"
+                                "payload":"educational qualifications"
                               },
                               {
                                 "content_type":"text",
@@ -513,11 +515,6 @@ def handle_quickreply(fbid):
                           }
                         }
     return json.dumps(response_object)
-
-
-
-
-
 
 
 
@@ -599,9 +596,6 @@ def resume(request,id):
     p.showPage()
     p.save()
     return response
-
-
-
 
 def index(request):
     set_menu()
@@ -702,7 +696,6 @@ def eventreg(request):
 
     return render(request,'chatbot/shop.html',context_dict)
 
-
 def set_menu():
     post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
     
@@ -732,10 +725,6 @@ def set_menu():
     status = requests.post(post_message_url,
           headers = {"Content-Type": "application/json"},
           data = menu_object)
-
-
-
-
 
 def handle_postback(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
@@ -776,6 +765,17 @@ def handle_postback(fbid,payload):
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg) 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
