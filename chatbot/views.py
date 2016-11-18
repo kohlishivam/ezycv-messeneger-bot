@@ -384,21 +384,21 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'options')
 
                     elif pp.state == '1111':
-                        pp.skills_4 = message_text
+                        pp.skills_1 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_skills')
 
 
                     elif pp.state == '1112':
-                        pp.skills_4 = message_text
+                        pp.skills_2 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_skills')
 
 
                     elif pp.state == '1113':
-                        pp.skills_4 = message_text
+                        pp.skills_3 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_skills')
@@ -467,22 +467,22 @@ def quickreply_skills(fbid):
                               },
                               {
                                 "content_type":"text",
-                                "title":"add more",
+                                "title":"skills_1",
                                 "payload":"add_skills_1"
                               },
                               {
                                 "content_type":"text",
-                                "title":"add more",
+                                "title":"skills_2",
                                 "payload":"add_skills_2"
                               },
                               {
                                 "content_type":"text",
-                                "title":"add more",
+                                "title":"skills_3",
                                 "payload":"add_skills_3"
                               },
                               {
                                 "content_type":"text",
-                                "title":"add more",
+                                "title":"skills_4",
                                 "payload":"add_skills_4"
                               }
                             ]
@@ -500,7 +500,7 @@ def handle_quickreply(fbid,payload):
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1111'
         pp.save()
-        return post_facebook_message(fbid,'ENTER YOUR SKILLS')
+        return post_facebook_message(fbid,'options_skills')
 
     elif payload == 'educational qualifications':
         return post_facebook_message(fbid,'options')
