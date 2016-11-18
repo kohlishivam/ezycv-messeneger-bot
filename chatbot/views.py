@@ -533,28 +533,28 @@ def quickreply_qualification(fbid):
                             "quick_replies":[
                               {
                                 "content_type":"text",
-                                "title":"skills_1",
-                                "payload":"add_skills_1"
+                                "title":"qualification_1",
+                                "payload":"add_qualification_1"
                               },
                               {
                                 "content_type":"text",
-                                "title":"skills_2",
-                                "payload":"add_skills_2"
+                                "title":"qualification_2",
+                                "payload":"add_qualification_2"
                               },
                               {
                                 "content_type":"text",
-                                "title":"skills_3",
-                                "payload":"add_skills_3"
+                                "title":"qualification_3",
+                                "payload":"add_qualification_3"
                               },
                               {
                                 "content_type":"text",
-                                "title":"skills_4",
-                                "payload":"add_skills_4"
+                                "title":"qualification_4",
+                                "payload":"add_qualification_4"
                               },
                               {
                                 "content_type":"text",
                                 "title":"thats all",
-                                "payload":"done_skills"
+                                "payload":"done_qualification"
                               },
                             ]
                           }
