@@ -50,6 +50,9 @@ def post_facebook_message(fbid,message_text):
     elif message_text == 'options_skills':
         response_msg = quickreply_skills(fbid)
 
+    elif message_text == 'options_qualification':
+        response_msg = quickreply_qualification(fbid)
+
     
 
     else:
@@ -408,7 +411,37 @@ class MyChatBotView(generic.View):
                         pp.skills_4 = message_text
                         pp.state='0'
                         pp.save()
+                        post_facebook_message(sender_id,'options')
+
+
+                    elif pp.state == '1121':
+                        pp.educational_qualifications_1 = message_text
+                        pp.state='0'
+                        pp.save()
                         post_facebook_message(sender_id,'options_skills')
+
+
+                    elif pp.state == '1122':
+                        pp.educational_qualifications_2 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+
+                    elif pp.state == '1123':
+                        pp.educational_qualifications_3 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options_skills')
+
+
+                    elif pp.state == '1124':
+                        pp.educational_qualifications_4 = message_text
+                        pp.state='0'
+                        pp.save()
+                        post_facebook_message(sender_id,'options')
+
+        
 
         
 
@@ -449,9 +482,47 @@ class MyChatBotView(generic.View):
 
 
             return HttpResponse()
-
-
 def quickreply_skills(fbid):
+    
+    response_object =   {
+                          "recipient":{
+                            "id":fbid
+                          },
+                          "message":{
+                            "text":"Select your coloumn:",
+                            "quick_replies":[
+                              {
+                                "content_type":"text",
+                                "title":"skills_1",
+                                "payload":"add_skills_1"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"skills_2",
+                                "payload":"add_skills_2"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"skills_3",
+                                "payload":"add_skills_3"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"skills_4",
+                                "payload":"add_skills_4"
+                              },
+                              {
+                                "content_type":"text",
+                                "title":"thats all",
+                                "payload":"done_skills"
+                              },
+                            ]
+                          }
+                        }
+    return json.dumps(response_object)
+
+
+def quickreply_qualification(fbid):
     
     response_object =   {
                           "recipient":{
@@ -499,9 +570,6 @@ def handle_quickreply(fbid,payload):
     if payload == 'skills':
         return post_facebook_message(fbid,'options_skills')
 
-    elif payload == 'educational qualifications':
-        return post_facebook_message(fbid,'options')
-
     elif payload == 'done_skills':
         return post_facebook_message(fbid,'options')
 
@@ -528,6 +596,37 @@ def handle_quickreply(fbid,payload):
         pp.state = '1114'
         pp.save()
         return post_facebook_message(fbid,'Enter your skills')
+
+
+    elif payload == 'educational qualifications':
+        return post_facebook_message(fbid,'options_qualification')
+
+    elif payload == 'done_qualification':
+        return post_facebook_message(fbid,'options')
+
+    elif payload == 'add_qualification_1':
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '1121'
+        pp.save()
+        return post_facebook_message(fbid,'Enter your qualification')
+
+    elif payload == 'add_qualification_2':
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '1122'
+        pp.save()
+        return post_facebook_message(fbid,'Enter your qualification')
+
+    elif payload == 'add_qualification_3':
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '1123'
+        pp.save()
+        return post_facebook_message(fbid,'Enter your qualification')
+
+    elif payload == 'add_qualification_4':
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '1124'
+        pp.save()
+        return post_facebook_message(fbid,'Enter your qualification')
 
 
 def quickreply(fbid):
