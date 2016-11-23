@@ -505,9 +505,7 @@ class MyChatBotView(generic.View):
                         pp.save()
                         post_facebook_message(sender_id,'options')
 
-                    else:
-                        post_facebook_message(sender_id,'options')
-
+                    
                     
                     
 
