@@ -694,7 +694,7 @@ def handle_quickreply(fbid,payload):
 
 
     if payload == 'experience':
-        return post_facebook_message(fbid,'options_experience ,enter the complete details of your title')
+        return post_facebook_message(fbid,'options_experience')
 
     elif payload == 'done_experience':
         return post_facebook_message(fbid,'options')
@@ -703,7 +703,7 @@ def handle_quickreply(fbid,payload):
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1131'
         pp.save()
-        return post_facebook_message(fbid,'Enter your experience')
+        return post_facebook_message(fbid,'Enter your experience,detailing about your tittle')
 
     elif payload == 'add_experience_2':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
