@@ -825,6 +825,11 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(fbid,'Enter your HOBBIES')
 
 
+    if payload == 'IM DONE':
+        return post_facebook_message(fbid,'resume download')
+
+
+
 def quickreply(fbid):
     
     response_object =   {
@@ -856,7 +861,7 @@ def quickreply(fbid):
                               },
                               {
                                 "content_type":"text",
-                                "title":"THATS ALL",
+                                "title":"IM DONE",
                                 "payload":"finish"
                               }
                             ]
