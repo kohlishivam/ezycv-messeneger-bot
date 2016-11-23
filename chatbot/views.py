@@ -825,7 +825,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(fbid,'Enter your HOBBIES')
 
 
-    if payload == 'IM DONE':
+    if payload == 'finish':
         return post_facebook_message(fbid,'resume download')
 
 
