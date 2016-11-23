@@ -448,28 +448,28 @@ class MyChatBotView(generic.View):
 
 
                     elif pp.state == '1131':
-                        pp.educational_qualifications_1 = message_text
+                        pp.experience_1 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_experience')
 
 
                     elif pp.state == '1132':
-                        pp.educational_qualifications_2 = message_text
+                        pp.experience_2 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_experience')
 
 
                     elif pp.state == '1133':
-                        pp.educational_qualifications_3 = message_text
+                        pp.experience_3 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options_experience')
 
 
                     elif pp.state == '1134':
-                        pp.educational_qualifications_4 = message_text
+                        pp.experience_4 = message_text
                         pp.state='0'
                         pp.save()
                         post_facebook_message(sender_id,'options')
@@ -1006,11 +1006,6 @@ def handle_postback(fbid,payload):
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg) 
-
-
-
-
-
 
 
 
