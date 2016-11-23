@@ -426,21 +426,21 @@ class MyChatBotView(generic.View):
                         pp.educational_qualifications_1 = message_text
                         pp.state='0'
                         pp.save()
-                        post_facebook_message(sender_id,'options_skills')
+                        post_facebook_message(sender_id,'options_qualification')
 
 
                     elif pp.state == '1122':
                         pp.educational_qualifications_2 = message_text
                         pp.state='0'
                         pp.save()
-                        post_facebook_message(sender_id,'options_skills')
+                        post_facebook_message(sender_id,'options_qualification')
 
 
                     elif pp.state == '1123':
                         pp.educational_qualifications_3 = message_text
                         pp.state='0'
                         pp.save()
-                        post_facebook_message(sender_id,'options_skills')
+                        post_facebook_message(sender_id,'options_qualification')
 
 
                     elif pp.state == '1124':
