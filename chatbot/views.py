@@ -1461,7 +1461,7 @@ def resume_2(request,id):
     p.setFont("Helvetica", 30)
     p.drawString(230,820, pp.name)
     p.setFont("Helvetica", 12)
-    p.drawString(230,800,pp.email)
+    p.drawString(230,800,pp.emailid)
     p.drawString(230,790,pp.contact)
 
 
