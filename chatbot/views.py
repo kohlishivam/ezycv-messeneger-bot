@@ -219,50 +219,50 @@ def cards(fbid):
 
 def selectcard(fbid):
     response_object ={
-  "recipient":{
-    "id":fbid
-  },
-  "message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":[
-          {
-            "title":"Resume",
-            
-            "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=PAPER-Resume&w=450&h=500",
-            "subtitle":"Make a paper-resume(a pdf of your resume)",
-            "buttons":[
-              
+      "recipient":{
+        "id":fbid
+      },
+      "message":{
+        "attachment":{
+          "type":"template",
+          "payload":{
+            "template_type":"generic",
+            "elements":[
               {
-                "type":"postback",
                 "title":"Resume",
-                "payload":"PAPER_RESUME"
-              }              
-            ]
-          },
-          {
-            "title":"Event Website",
-            
-            "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=Event%20Website&w=450&h=500",
-            "subtitle":"Make your own website website",
-            "buttons":[
-              
+                
+                "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=PAPER-Resume&w=450&h=500",
+                "subtitle":"Make a paper-resume(a pdf of your resume)",
+                "buttons":[
+                  
+                  {
+                    "type":"postback",
+                    "title":"Resume",
+                    "payload":"PAPER_RESUME"
+                  }              
+                ]
+              },
               {
-                "type":"postback",
-                "title":"event-website",
-                "payload":"WEBSITE"
-              }              
+                "title":"Event Website",
+                
+                "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=Event%20Website&w=450&h=500",
+                "subtitle":"Make your own website website",
+                "buttons":[
+                  
+                  {
+                    "type":"postback",
+                    "title":"event-website",
+                    "payload":"WEBSITE"
+                  }              
+                ]
+              }
+
+
             ]
           }
-
-
-        ]
-      }
+            }
+          }
         }
-      }
-    }
     return json.dumps(response_object)
 
 class MyChatBotView(generic.View):
@@ -1329,7 +1329,7 @@ def resume_1(request,id):
     #print dir(p)
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
-    a= userdeatils(sender_id)
+    a= userdeatils(id)
     pp.name = '%s %s'%(a['first_name'],a['last_name'])
     p.setFont("Helvetica", 20)
     p.drawString(230,820, pp.name)
@@ -1456,7 +1456,7 @@ def resume_2(request,id):
     #print dir(p)
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
-    a= userdeatils(sender_id)
+    a= userdeatils(id)
     pp.name = '%s %s'%(a['first_name'],a['last_name'])
     p.setFont("Helvetica", 30)
     p.drawString(230,820, pp.name)
