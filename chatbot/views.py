@@ -1394,6 +1394,8 @@ def resume_1(request,id):
 def index(request):
     set_menu()
     handle_postback('fbid','MENU_WHY')
+    greeting_button()
+    greeting_text()
     context_dict = {}
     context_dict['fbid'] = sender_id
     return render(request,'chatbot/index.html', context_dict)
