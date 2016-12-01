@@ -106,12 +106,12 @@ def card_resume_website(fbid):
             "elements": [{
               "title": "RESUME",
               "subtitle": "Don,t wait just click",
-              "item_url": "https://ezycvtester.herokuapp.com/resume/%s"%(fbid),               
-              "item_url": "https://ezycvtester.herokuapp.com/resume/%s"%(fbid),               
+              "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),               
+              "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),               
               "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=website%20Resume&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://ezycvtester.herokuapp.com/resume/%s"%(fbid),  
+                "url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),  
                 "title": "DOWNLOAD"
               }, {
                 "type": "element_share"
@@ -140,12 +140,12 @@ def card_resume(fbid):
             "elements": [{
               "title": "RESUME_1 theme",
               "subtitle": "Don,t wait just click",
-              "item_url": "https://ezycvtester.herokuapp.com/resume_1/%s"%(fbid),               
-              "item_url": "https://ezycvtester.herokuapp.com/resume_1/%s"%(fbid),               
+              "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume_1/%s"%(fbid),               
+              "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume_1/%s"%(fbid),               
               "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume1&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://ezycvtester.herokuapp.com/resume_1/%s"%(fbid),  
+                "url": "https://tranquil-chamber-58544.herokuapp.com/resume_1/%s"%(fbid),  
                 "title": "DOWNLOAD"
               }, {
                 "type": "element_share"
@@ -153,11 +153,11 @@ def card_resume(fbid):
             }, {
               "title": "RESUME_2 theme",
               "subtitle": "Don,t wait just click",
-              "item_url": "https://ezycvtester.herokuapp.com/resume_2/%s"%(fbid),               
+              "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume_2/%s"%(fbid),               
               "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume2&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://ezycvtester.herokuapp.com/resume_2/%s"%(fbid), 
+                "url": "https://tranquil-chamber-58544.herokuapp.com/resume_2/%s"%(fbid), 
                 "title": "DOWNLOAD"
               }, {
                 "type": "element_share"
@@ -215,6 +215,7 @@ def cards(fbid):
     }
 
     return json.dumps(response_object)
+
 
 def selectcard(fbid):
     response_object ={
@@ -1273,7 +1274,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'go ahead and send its link .')
 
     elif payload == 'NO':
-        url = 'https://myresumemaker.herokuapp.com/temp1/' + str(fbid)
+        url = 'https://myresumemaker.herokuapp.com/temp2/' + str(fbid)
         return post_facebook_message(sender_id,url)        
 
         response_msg = json.dumps(response_object)
@@ -1397,49 +1398,7 @@ def index(request):
     context_dict['fbid'] = sender_id
     return render(request,'chatbot/index.html', context_dict)
 
-def eventweb(request,id):
-    #fbid = '1047867078643788'
 
-
-    p = event.objects.get_or_create(fbid =id)[0]
-    name = p.name 
-    location = p.location
-    logolink = p.logolink  
-    description = p.description
-    fblink = p.fblink  
-    emailid = p.emailid  
-    oname = p.oname 
-    dateend = p.dateend 
-    datestart =  p.datestart  
-    contact = p.contact 
-    tagline = p.tagline
-    twitterlink = p.twitterlink
-    sub1 = p.sub1
-    sub2 = p.sub2
-    sub3 = p.sub3
-    sub4 = p.sub4
-
-    context_dict = {}
-    context_dict['eventname'] = name 
-    context_dict['location'] = location
-    context_dict['logolink'] = logolink
-    context_dict['description'] = description
-    context_dict['fblink'] = fblink
-    context_dict['emailid'] = emailid
-    context_dict['organisername'] = oname
-    context_dict['dateend'] = dateend
-    context_dict['datestart'] = datestart
-    context_dict['contact'] = contact
-    context_dict['tagline'] = tagline
-    context_dict['twitterlink'] = twitterlink
-    context_dict['sub1'] = sub1
-    context_dict['sub2'] = sub2
-    context_dict['sub3'] = sub3
-    context_dict['sub4'] = sub4
-
-
-
-    return render(request,'chatbot/temp1.html',context_dict)
 
 def eventweb2(request,id):
     #fbid = '1047867078643788'
