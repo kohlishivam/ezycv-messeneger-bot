@@ -88,10 +88,6 @@ def post_facebook_message(fbid,message_text):
                     headers={"Content-Type": "application/json"},
                     data=response_msg)
 
-
-
-
-
 def card_resume_website(fbid):
     
     response_object = {
@@ -108,7 +104,7 @@ def card_resume_website(fbid):
               "subtitle": "Don,t wait just click",
               "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),               
               "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),               
-              "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=website%20Resume&w=400&h=500",
+              "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Wbsite%20Resume&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
                 "url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),  
@@ -124,7 +120,6 @@ def card_resume_website(fbid):
     }
 
     return json.dumps(response_object)
-
 
 def card_resume(fbid):
     
@@ -142,7 +137,7 @@ def card_resume(fbid):
               "subtitle": "Don,t wait just click",
               "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume_1/%s"%(fbid),               
               "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume_1/%s"%(fbid),               
-              "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume1&w=400&h=500",
+              "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume%Template%1&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
                 "url": "https://tranquil-chamber-58544.herokuapp.com/resume_1/%s"%(fbid),  
@@ -154,7 +149,7 @@ def card_resume(fbid):
               "title": "RESUME_2 theme",
               "subtitle": "Don,t wait just click",
               "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume_2/%s"%(fbid),               
-              "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume2&w=400&h=500",
+              "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Download%20Resume%Template%2&w=400&h=500",
               "buttons": [{
                 "type": "web_url",
                 "url": "https://tranquil-chamber-58544.herokuapp.com/resume_2/%s"%(fbid), 
@@ -216,7 +211,6 @@ def cards(fbid):
 
     return json.dumps(response_object)
 
-
 def selectcard(fbid):
     response_object ={
       "recipient":{
@@ -231,7 +225,7 @@ def selectcard(fbid):
               {
                 "title":"Resume",
                 
-                "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=PAPER-Resume&w=450&h=500",
+                "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=Paper-Resume&w=450&h=500",
                 "subtitle":"Make a paper-resume(a pdf of your resume)",
                 "buttons":[
                   
@@ -245,7 +239,7 @@ def selectcard(fbid):
               {
                 "title":"Event Website",
                 
-                "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=Event%20Website&w=450&h=500",
+                "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=E%20Website&w=450&h=500",
                 "subtitle":"Make your own website website",
                 "buttons":[
                   
@@ -310,7 +304,9 @@ class MyChatBotView(generic.View):
                         p.mobile = message_text
                         p.state = '4'
                         p.save()
-                        post_facebook_message(sender_id,'Please enter your Email-Id ')                        
+                        post_facebook_message(sender_id,'U have selected the option for making a paper resume(pdf format) ') 
+                        post_facebook_message(sender_id,'Now provide me with some of your details')
+                        post_facebook_message(sender_id,'Staring with your emailid')                       
 
                     elif p.state == '4':
                         p.emailid = message_text
@@ -334,7 +330,7 @@ class MyChatBotView(generic.View):
                         p.description = message_text
                         p.state = '9'
                         p.save()
-                        post_facebook_message(sender_id,'Describe yourself in a line or two ')
+                        post_facebook_message(sender_id,'Describe yourself in one or two line that makes you different from the crowd')
 
                     elif p.state == '8':
                         p.field = message_text
@@ -346,7 +342,7 @@ class MyChatBotView(generic.View):
                         p.elaborate = message_text
                         p.state = '10'
                         p.save()
-                        post_facebook_message(sender_id,'Where do you live ') 
+                        post_facebook_message(sender_id,'Where do you put up?') 
 
                     elif p.state == '10':
                         p.location = message_text
@@ -366,7 +362,7 @@ class MyChatBotView(generic.View):
                           
                           p.save()
                           print
-                          post_facebook_message(sender_id,'Go ahead and enter')
+                          post_facebook_message(sender_id,'Go ahead and enter the text ')
 
                         elif message_text == "Picture" :
                           p.j = str(int(p.j) + 2)
@@ -374,7 +370,7 @@ class MyChatBotView(generic.View):
                           p.save()
                           p.state = '1' + p.j
                           p.save()
-                          post_facebook_message(sender_id,'Go ahead and send ')
+                          post_facebook_message(sender_id,'Go ahead and send me the picture')
 
 
 
@@ -423,33 +419,33 @@ class MyChatBotView(generic.View):
                         pp.emailid = message_text
                         pp.state='3'
                         pp.save()
-                        post_facebook_message(sender_id,'Your date of birth')
+                        post_facebook_message(sender_id,'When where you born ? ')
                        
                         
                     elif pp.state =='3':
                         pp.dob = message_text
                         pp.state='4'
                         pp.save()
-                        post_facebook_message(sender_id,'Great ,Now  Please tell me your contact PHONE NUMBER to be displayed on the resume ')
+                        post_facebook_message(sender_id,'Great ,Now Please tell me your contact PHONE NUMBER to be displayed on the resume ')
                     
                     elif pp.state =='4':
                         pp.contact = message_text
                         pp.state='5'
                         pp.save()
-                        post_facebook_message(sender_id,'Great ,Now  Please provide me your LinkedIn id')
+                        post_facebook_message(sender_id,'Great ,Now Please provide me with your LinkedIn id which would be displayed on your resume')
 
                     elif pp.state =='5':
                         pp.LinkedIn = message_text
                         pp.state='6'
                         pp.save()
-                        post_facebook_message(sender_id,'Now your city of residence')
+                        post_facebook_message(sender_id,'Where do you put up?')
          
 
                     elif pp.state =='6':
                         pp.city = message_text
                         pp.state='7'
                         pp.save()
-                        post_facebook_message(sender_id,'okay, now your Summary or Objective. ')
+                        post_facebook_message(sender_id,'Describe yourself in one that makes you different from the crowd')
 
  
                     elif pp.state == '7':
@@ -589,30 +585,30 @@ class MyChatBotView(generic.View):
                 try:
 
                   if message["message"]["attachments"][0]["type"] == "image":
-                    p = eresume.objects.get_or_create(fbid =sender_id)[0]
-                    if p.state == '13':
-                      p.work1 = message["message"]["attachments"][0]["payload"]["url"]
-                      p.state = '0'
-                      p.save()
-                      post_facebook_message(sender_id,'work_quickreplies')
+                      p = eresume.objects.get_or_create(fbid =sender_id)[0]
+                      if p.state == '13':
+                          p.work1 = message["message"]["attachments"][0]["payload"]["url"]
+                          p.state = '0'
+                          p.save()
+                          post_facebook_message(sender_id,'work_quickreplies')
 
-                    elif p.state == '15':
-                      p.work2 = message["message"]["attachments"][0]["payload"]["url"]
-                      p.state = '0'
-                      p.save()
-                      post_facebook_message(sender_id,'work_quickreplies')
+                      elif p.state == '15':
+                          p.work2 = message["message"]["attachments"][0]["payload"]["url"]
+                          p.state = '0'
+                          p.save()
+                          post_facebook_message(sender_id,'work_quickreplies')
 
-                    elif p.state == '17':
-                      p.work3 = message["message"]["attachments"][0]["payload"]["url"]
-                      p.state = '0'
-                      p.save()
-                      post_facebook_message(sender_id,'work_quickreplies')
+                      elif p.state == '17':
+                          p.work3 = message["message"]["attachments"][0]["payload"]["url"]
+                          p.state = '0'
+                          p.save()
+                          post_facebook_message(sender_id,'work_quickreplies')
 
-                    elif p.state == '19':
-                      p.work4 = message["message"]["attachments"][0]["payload"]["url"]
-                      p.state = '0'
-                      p.save()
-                      post_facebook_message(sender_id,'resumeask')      
+                      elif p.state == '19':
+                          p.work4 = message["message"]["attachments"][0]["payload"]["url"]
+                          p.state = '0'
+                          p.save()
+                          post_facebook_message(sender_id,'resumeask')      
 
                         
                   else:
@@ -653,7 +649,7 @@ def field_quickreplies(fbid):
     "id":fbid
    },
    "message":{
-    "text":"Pick a field:",
+    "text":"Choose a field that describe your passion:",
     "quick_replies":[
 
       {
@@ -761,7 +757,7 @@ def work_quickreplies(fbid):
     "id":fbid
      },
      "message":{
-    "text":"please add upto four best works by clicking buttons below and after adding click thats all ",
+    "text":"Please add upto four best works by clicking buttons below : ",
     "quick_replies":[
       
       {
@@ -802,7 +798,7 @@ def works_quickreplies(fbid):
     "id":fbid
    },
    "message":{
-    "text":"Pick a field:",
+    "text":"Choose a method of input:",
     "quick_replies":[
       {
         "content_type":"text",
@@ -829,7 +825,7 @@ def resumeask(fbid):
     "id":fbid
    },
    "message":{
-    "text":"Do you have a paper resume?",
+    "text":"Do you have a paper resume ?",
     "quick_replies":[
       {
         "content_type":"text",
@@ -855,7 +851,7 @@ def social_quickreplies(fbid):
     "id":fbid
    },
    "message":{
-    "text":"please  select the the social links to be added one by one",
+    "text":"Please  select the the social links that you would like to display on your website",
     "quick_replies":[
       {
         "content_type":"text",
@@ -891,7 +887,7 @@ def quickreply_HOBBIES(fbid):
                             "id":fbid
                           },
                           "message":{
-                            "text":"Select your coloumn:",
+                            "text":"Please add upto four hobbies that you love to do in your leisure time:",
                             "quick_replies":[
                               {
                                 "content_type":"text",
@@ -930,7 +926,7 @@ def quickreply_experience(fbid):
                             "id":fbid
                           },
                           "message":{
-                            "text":"Select your coloumn:",
+                            "text":"Please add upto four best works by clicking buttons below:",
                             "quick_replies":[
                               {
                                 "content_type":"text",
@@ -969,7 +965,7 @@ def quickreply_skills(fbid):
                             "id":fbid
                           },
                           "message":{
-                            "text":"Select your coloumn:",
+                            "text":"Select a option to tell more about your passion:",
                             "quick_replies":[
                               {
                                 "content_type":"text",
@@ -1008,7 +1004,7 @@ def quickreply_qualification(fbid):
                             "id":fbid
                           },
                           "message":{
-                            "text":"Select your coloumn:",
+                            "text":"Provide me with the complete details of your educational qualifications:",
                             "quick_replies":[
                               {
                                 "content_type":"text",
@@ -1086,25 +1082,25 @@ def handle_quickreply(fbid,payload):
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1121'
         pp.save()
-        return post_facebook_message(fbid,'Enter your qualification')
+        return post_facebook_message(fbid,'Your qualification')
 
     elif payload == 'add_qualification_2':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1122'
         pp.save()
-        return post_facebook_message(fbid,'Enter your qualification')
+        return post_facebook_message(fbid,'Your qualification')
 
     elif payload == 'add_qualification_3':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1123'
         pp.save()
-        return post_facebook_message(fbid,'Enter your qualification')
+        return post_facebook_message(fbid,'Your qualification')
 
     elif payload == 'add_qualification_4':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1124'
         pp.save()
-        return post_facebook_message(fbid,'Enter your qualification')
+        return post_facebook_message(fbid,'Your qualification')
 
 
 
@@ -1118,25 +1114,25 @@ def handle_quickreply(fbid,payload):
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1131'
         pp.save()
-        return post_facebook_message(fbid,'Enter your experience,detailing about your tittle')
+        return post_facebook_message(fbid,'Provide me with your first work experience , detailing about your tittle')
 
     elif payload == 'add_experience_2':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1132'
         pp.save()
-        return post_facebook_message(fbid,'Enter your experience')
+        return post_facebook_message(fbid,'Provide me with your second work experience')
 
     elif payload == 'add_experience_3':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1133'
         pp.save()
-        return post_facebook_message(fbid,'Enter your experience')
+        return post_facebook_message(fbid,'Provide me with your third work experience')
 
     elif payload == 'add_experience_4':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1134'
         pp.save()
-        return post_facebook_message(fbid,'Enter your experience')
+        return post_facebook_message(fbid,'Provide me with your fourth work experience')
 
 
     elif payload == 'HOBBIES':
@@ -1149,25 +1145,25 @@ def handle_quickreply(fbid,payload):
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1141'
         pp.save()
-        return post_facebook_message(fbid,'Enter your HOBBIES,detailing about your tittle')
+        return post_facebook_message(fbid,'Go ahead and type your hobbies')
 
     elif payload == 'add_HOBBIES_2':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1142'
         pp.save()
-        return post_facebook_message(fbid,'Enter your HOBBIES')
+        return post_facebook_message(fbid,'Go ahead and type your hobbies')
 
     elif payload == 'add_HOBBIES_3':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1143'
         pp.save()
-        return post_facebook_message(fbid,'Enter your HOBBIES')
+        return post_facebook_message(fbid,'Go ahead and type your hobbies')
 
     elif payload == 'add_HOBBIES_4':
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1144'
         pp.save()
-        return post_facebook_message(fbid,'Enter your HOBBIES')
+        return post_facebook_message(fbid,'Go ahead and type your hobbies')
 
 
     elif payload == 'finish':
@@ -1212,33 +1208,33 @@ def handle_quickreply(fbid,payload):
         p.state = '8'
 
         p.save()
-        return post_facebook_message(sender_id,'go ahead and type')           
+        return post_facebook_message(sender_id,'Yes go ahead and type')           
 
     elif payload == 'END':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '3'
 
         p.save()
-        return post_facebook_message(sender_id,'Please enter your phone number')
+        return post_facebook_message(sender_id,'Your Contact Phone Number')
 
 
     elif payload == 'FACEBOOK':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '5'        
         p.save()
-        return post_facebook_message(sender_id,'please send the link to your Facebook profile')
+        return post_facebook_message(sender_id,'Please provide me with the link to your Facebook profile')
 
     elif payload == 'TWITTER':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '6'        
         p.save()
-        return post_facebook_message(sender_id,'please send the link to your Twitter profile')        
+        return post_facebook_message(sender_id,'Please provide me with the link to your Twitter profile')        
  
     elif payload == 'ALL':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '7'        
         p.save()
-        return post_facebook_message(sender_id,'Give description to your Job Profile in Line or two')             
+        return post_facebook_message(sender_id,'Provide me with the description for your Profile')             
 
     elif payload == 'BACK':
         return post_facebook_message(sender_id,'resumeask')
@@ -1271,7 +1267,7 @@ def handle_quickreply(fbid,payload):
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '20'        
         p.save()
-        return post_facebook_message(sender_id,'go ahead and send its link .')
+        return post_facebook_message(sender_id,'Go ahead and please provide me with its link.')
 
     elif payload == 'NO':
         url = 'https://myresumemaker.herokuapp.com/temp2/' + str(fbid)
@@ -1588,8 +1584,9 @@ def handle_postback(fbid,payload):
         pp.state = '1'
         pp.greetings = 'TRUE'
         pp.save()
-
-        return post_facebook_message(fbid,'Please tell me your email id ')  
+        post_facebook_message(sender_id,'U have selected the option for making a paper resume(pdf format) ') 
+        post_facebook_message(sender_id,'Now provide me with some of your details')
+        return post_facebook_message(sender_id,'Staring with your emailid') 
 
 
                               
@@ -1615,7 +1612,7 @@ def greeting_text():
     response_object =   {
          "setting_type":"greeting",
              "greeting":{
-             "text":"Hey , This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today "
+             "text":"Hey ,This is a automated chatting software that will be interacting will you and will ask u your details about your resume or details for your own website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today "
                 }
             }
 
