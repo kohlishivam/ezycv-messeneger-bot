@@ -1425,7 +1425,7 @@ def eresume_1(request,id):
     context_dict['work2'] = work2
     context_dict['work3'] = work3
     context_dict['work4'] = work4
-    return render(request,'chatbot/temp2.html',context_dict)
+    return render(request,'chatbot/ersume.html',context_dict)
 
 
 def resume_2(request,id):
