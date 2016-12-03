@@ -399,7 +399,7 @@ class MyChatBotView(generic.View):
                         
                     
                     elif p.state == '20':
-                        url = 'https://myresumemaker.herokuapp.com/temp2/' + str(sender_id)
+                        url = 'https://tranquil-chamber-58544.herokuapp.com/temp2/' + str(sender_id)
         
                         p.cvlink = message_text
                         p.state = '0'
@@ -1391,7 +1391,6 @@ def index(request):
     context_dict['fbid'] = sender_id
     return render(request,'chatbot/index.html', context_dict)
 
-
 def eresume_1(request,id):
     #fbid = '1047867078643788'
 
@@ -1426,9 +1425,6 @@ def eresume_1(request,id):
     context_dict['work2'] = work2
     context_dict['work3'] = work3
     context_dict['work4'] = work4
-
-
-
     return render(request,'chatbot/eresume.html',context_dict)
 
 
