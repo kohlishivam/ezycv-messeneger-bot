@@ -88,39 +88,6 @@ def post_facebook_message(fbid,message_text):
                     headers={"Content-Type": "application/json"},
                     data=response_msg)
 
-def card_resume_website(fbid):
-    
-    response_object = {
-      "recipient": {
-        "id": fbid
-      },
-      "message": {
-        "attachment": {
-          "type": "template",
-          "payload": {
-            "template_type": "generic",
-            "elements": [{
-              "title": "RESUME",
-              "subtitle": "Don,t wait just click",
-              "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),               
-              "item_url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),               
-              "image_url": "https://placeholdit.imgix.net/~text?txtsize=50&txt=Wbsite%20Resume&w=400&h=500",
-              "buttons": [{
-                "type": "web_url",
-                "url": "https://tranquil-chamber-58544.herokuapp.com/resume/%s"%(fbid),  
-                "title": "DOWNLOAD"
-              }, {
-                "type": "element_share"
-              }]
-              
-            }]
-          }
-        }
-      }
-    }
-
-    return json.dumps(response_object)
-
 def card_resume(fbid):
     
     response_object = {
