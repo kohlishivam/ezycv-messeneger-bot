@@ -299,14 +299,14 @@ class MyChatBotView(generic.View):
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'whenever you are done adding fields please click thats all to proceed  ')
+                        post_facebook_message(sender_id,'U have selected the option for making a e resume(your own website) ') 
+                        post_facebook_message(sender_id,'Now provide me with some of your details')
 
                     elif p.state == '3':
                         p.mobile = message_text
                         p.state = '4'
-                        p.save()
-                        post_facebook_message(sender_id,'U have selected the option for making a paper resume(pdf format) ') 
-                        post_facebook_message(sender_id,'Now provide me with some of your details')
-                        post_facebook_message(sender_id,'Staring with your emailid')                       
+                        p.save()                        
+                        post_facebook_message(sender_id,'Your emailid')                       
 
                     elif p.state == '4':
                         p.emailid = message_text
