@@ -239,7 +239,7 @@ def selectcard(fbid):
               {
                 "title":"Event Website",
                 
-                "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=E%20Website&w=450&h=500",
+                "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=E%20Resume&w=450&h=500",
                 "subtitle":"Make your own website website",
                 "buttons":[
                   
