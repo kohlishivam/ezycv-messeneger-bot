@@ -240,7 +240,7 @@ def selectcard(fbid):
                 "title":"Event Website",
                 
                 "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=E%20Resume&w=450&h=500",
-                "subtitle":"Make your own website website",
+                "subtitle":"Make your own website ",
                 "buttons":[
                   
                   {
@@ -298,8 +298,6 @@ class MyChatBotView(generic.View):
                     if p.state == '2':
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'whenever you are done adding fields please click thats all to proceed  ')
-                        post_facebook_message(sender_id,'U have selected the option for making a e resume(your own website) ') 
                         post_facebook_message(sender_id,'Now provide me with some of your details')
 
                     elif p.state == '3':
@@ -1234,7 +1232,7 @@ def handle_quickreply(fbid,payload):
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '7'        
         p.save()
-        return post_facebook_message(sender_id,'Provide me with the description for your Profile')             
+        return post_facebook_message(sender_id,'Provide me with the description for your Job Profile')             
 
     elif payload == 'BACK':
         return post_facebook_message(sender_id,'resumeask')
@@ -1584,8 +1582,6 @@ def handle_postback(fbid,payload):
         pp.state = '1'
         pp.greetings = 'TRUE'
         pp.save()
-        post_facebook_message(sender_id,'U have selected the option for making a paper resume(pdf format) ') 
-        post_facebook_message(sender_id,'Now provide me with some of your details')
         return post_facebook_message(sender_id,'Staring with your emailid') 
 
 
