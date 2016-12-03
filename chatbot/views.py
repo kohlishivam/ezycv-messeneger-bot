@@ -1392,7 +1392,7 @@ def index(request):
     return render(request,'chatbot/index.html', context_dict)
 
 
-def ereume_1(request,id):
+def eresume_1(request,id):
     #fbid = '1047867078643788'
 
     p = eresume.objects.get_or_create(fbid = id)[0]
