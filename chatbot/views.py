@@ -875,9 +875,6 @@ def social_quickreplies(fbid):
     }
     return json.dumps(response_object)
 
-
-
-
 def quickreply_HOBBIES(fbid):
     
     response_object =   {
@@ -1396,10 +1393,11 @@ def index(request):
 
 
 
-def eventweb2(request,id):
+def eresume_1(request,id):
     #fbid = '1047867078643788'
 
-    p = event.objects.get_or_create(fbid = id)[0]
+
+    p = eresume.objects.get_or_create(fbid =id)[0]
     name = p.name 
     location = p.location
     logolink = p.logolink  
@@ -1437,7 +1435,8 @@ def eventweb2(request,id):
 
 
 
-    return render(request,'chatbot/temp2.html',context_dict)
+    return render(request,'chatbot/temp1.html',context_dict)
+
 
 def resume_2(request,id):
     # Create the HttpResponse object with the appropriate PDF headers.
