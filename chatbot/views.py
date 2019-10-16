@@ -12,7 +12,7 @@ from reportlab.platypus import Image
 from django.http import HttpResponse
 import urllib2
 from django.utils.decorators import method_decorator
-import json
+# import json
 import requests
 from chatbot.models import eresume,resume_input
 

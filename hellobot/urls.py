@@ -3,7 +3,7 @@ from django.contrib import admin
 import chatbot.views as v
 
 urlpatterns = patterns('',
-    # Examples:
+    ######## Examples:
     # url(r'^$', 'hellobot.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
